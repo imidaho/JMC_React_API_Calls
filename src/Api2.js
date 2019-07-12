@@ -7,6 +7,14 @@ class Api2 extends Component {
 
     photoInput = React.createRef();
 
+    generateImage = (farmId, serverId, Id, secret) => {
+        const html = `
+        <div>
+            <img src=https://farm${farmId}.staticflickr.com/${serverId}/${Id}_${secret}_[b].jpg >
+        </div>`
+        return html
+    }
+
     fetchPhotos = (e) => {
         let calledPhotos = []
         e.preventDefault();
@@ -14,7 +22,7 @@ class Api2 extends Component {
             .then(resp => resp.json())
             .then(data => {
                 console.log(data.photos.photo)
-                return data.photos.photo.map(index => generateImage(index.farm, index.server, index.id, index.secret))
+                return data.photos.photo.map(index => this.generateImage(index.farm, index.server, index.id, index.secret))
             }
             )
         //.then(array => array.map(index => generateImage(index.farm, index.server, index.id, index.secret)))
@@ -24,34 +32,27 @@ class Api2 extends Component {
         //.then(data.photos.map(calledPhotos.push))
         e.currentTarget.reset();
     }
-    generateImage(farmId, serverId, Id, secret) {
-        const html = `
-        <div>
-            <img src=https://farm${farmId}.staticflickr.com/${serverId}/${Id}_${secret}_[b].jpg >
-        </div>`
-        React.Fragment.innerHTML = html
-    }
+
     //populatePhotos
     //https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
     render() {
         return (
-            <form onSubmit={this.fetchPhotos} >
-                <input
-                    class="form-control form-control-lg"
-                    type="text"
-                    placeholder="search for photos"
-                    ref={this.photoInput}
-                />
-                <button type="submit" class="btn btn-primary mb-2">Search for photos with this term</button>
-            </form >
             <div>
-                <React.Fragment>
+                <div>
+                    <form onSubmit={this.fetchPhotos} >
+                        <input
+                            class="form-control form-control-lg"
+                            type="text"
+                            placeholder="search for photos"
+                            ref={this.photoInput}
+                        />
+                        <button type="submit" class="btn btn-primary mb-2">Search for photos with this term</button>
+                    </form >
+                </div>
+                <div html={this.generateImage}>
 
-
-                </React.Fragment>
-            </div>
-
-
+                </div>
+            </div >
         )
     }
 

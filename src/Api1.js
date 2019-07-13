@@ -6,30 +6,37 @@ class Api1 extends Component {
     constructor() {
         super();
         this.state = {
-            randomQuote: []
+            quoteOfTheDay: "",
+            author: ""
         }
     }
 
-    fetchQuote = () => {
-
+    fetchQuote = (buttonValue, e) => {
+        fetch(`http://quotes.rest/qod.json?category=${buttonValue}`)
+            .then(response => response.json())
+            .then(response => {
+                this.setState({ quoteOfTheDay: response.contents.quotes[0].quote })
+                this.setState({ author: response.contents.quotes[0].author })
+            })
     }
     render() {
+        const quoteToDisplay = `"${this.state.quoteOfTheDay}"`
+        const authorToDisplay = `-- ${this.state.author}`
         return (
             <div>
                 <div>
-                    <h1>Quote Search</h1>
+                    <h1>Choose a Quote of the Day from a category Below</h1>
                 </div>
                 <div>
-                    <form onSubmit={this.fetchQuote} >
-                        <input
-                            class="form-control form-control-lg"
-                            type="text"
-                            placeholder="Search for Quotes"
-                            ref={this.photoInput}
-                        />
-                        <button type="submit" class="btn btn-primary mb-2">Search for quotes about this</button>
-                    </form >
+                    <button type="button" onClick={(e) => this.fetchQuote('inspire', e)} class="btn btn-primary mb-2">Inspirational</button>
+                    <button type="button" onClick={(e) => this.fetchQuote('management', e)} class="btn btn-primary mb-2">Management</button>
+                    <button type="button" onClick={(e) => this.fetchQuote('life', e)} class="btn btn-primary mb-2">Life</button>
+                    <button type="button" onClick={(e) => this.fetchQuote('sports', e)} class="btn btn-primary mb-2">Sports</button>
+                    <button type="button" onClick={(e) => this.fetchQuote('love', e)} class="btn btn-primary mb-2">Love</button>
+                    <button type="button" onClick={(e) => this.fetchQuote('funny', e)} class="btn btn-primary mb-2">Funny</button>
                 </div>
+                <div>{quoteToDisplay} </div>
+                <div>{authorToDisplay}</div>
             </div >
         )
     }

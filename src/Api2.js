@@ -14,35 +14,23 @@ class Api2 extends Component {
     photoInput = React.createRef();
 
     generateImage = (farmId, serverId, Id, secret) => {
-        console.log(farmId)
-        const url = "https://farm" + farmId + ".staticFlickr.com/" + serverId + "/" + Id + "_" + secret + "_b.jpg"
-
+        const url = `https://farm${farmId}.staticFlickr.com/${serverId}/${Id}_${secret}_b.jpg`
         return (<div>
             <img src={url} />
         </div>)
     }
 
     fetchPhotos = (e) => {
-        let calledPhotos = []
         e.preventDefault();
         fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=84468b7152a743aab170a8e0fee052a1&tags=${this.photoInput.current.value}&per_page=5&format=json&nojsoncallback=1`)
             .then(resp => resp.json())
             .then(data => {
                 console.log(data.photos.photo)
-                //return data.photos.photo.map(index => this.generateImage(index.farm, index.server, index.id, index.secret))
                 this.setState({ flickrPhotos: data.photos.photo })
             }
             )
-        //.then(array => array.map(index => generateImage(index.farm, index.server, index.id, index.secret)))
-        //.then()
-        //.then(console.log(calledPhotos))
-        //.then(console.log)
-        //.then(data.photos.map(calledPhotos.push))
         e.currentTarget.reset();
     }
-
-    //populatePhotos
-    //https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
     render() {
         const photosToDisplay = this.state.flickrPhotos.map(index => this.generateImage(index.farm, index.server, index.id, index.secret))
 

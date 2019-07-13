@@ -39,6 +39,9 @@ class Api2 extends Component {
                 <div>
                     <h1>Photo Search</h1>
                 </div>
+                {/* <div>
+                    <span style="z-index:50;font-size:0.9em;"><img src="https://theysaidso.com/branding/theysaidso.png" height="20" width="20" alt="theysaidso.com" /><a href="https://theysaidso.com" title="Powered by quotes from theysaidso.com" style="color: #9fcc25; margin-left: 4px; vertical-align: middle;">theysaidso.com</a></span>
+                </div> */}
                 <div>
                     <form onSubmit={this.fetchPhotos} >
                         <input

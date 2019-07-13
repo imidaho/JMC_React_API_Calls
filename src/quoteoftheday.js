@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import PropTypes from 'prop-types'
 
-class Api1 extends Component {
+class QOD extends Component {
     constructor() {
         super();
         this.state = {
@@ -42,4 +42,4 @@ class Api1 extends Component {
     }
 }
 
-export default Api1
+export default QOD

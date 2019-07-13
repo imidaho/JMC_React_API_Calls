@@ -3,9 +3,9 @@ import { Route, HashRouter } from 'react-router-dom'
 import './App.css';
 import NavBar from './NavBar'
 import About from './About'
-import Api1 from './Api1'
-import Api2 from './Api2'
-import Api3 from './Api3'
+import QOD from './quoteoftheday'
+import FlickrImageSearch from './flickrimagesearch'
+import RandomUsers from './randomusers'
 // user can s
 class App extends Component {
 
@@ -16,9 +16,9 @@ class App extends Component {
         <div>
           <NavBar />
           <Route exact path="/" component={About} />
-          <Route path="/Api1" component={Api1} />
-          <Route path="/Api2" component={Api2} />
-          <Route path="/Api3" component={Api3} />
+          <Route path="/quoteoftheday" component={QOD} />
+          <Route path="/flickrimagesearch" component={FlickrImageSearch} />
+          <Route path="/randomusers" component={RandomUsers} />
 
         </div>
       </HashRouter>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import PropTypes from 'prop-types'
 
-class Api3 extends Component {
+class RandomUsers extends Component {
     constructor() {
         super();
         this.state = {
@@ -80,4 +80,4 @@ class Api3 extends Component {
 }
 //fetch('https://financialmodelingprep.com/api/cryptocurrency?datatype=json').then(x=> x.json()).then(console.log)
 
-export default Api3
+export default RandomUsers

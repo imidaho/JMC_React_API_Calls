@@ -3,7 +3,7 @@ import './App.css';
 import PropTypes from 'prop-types'
 
 
-class Api2 extends Component {
+class FlickrImageSearch extends Component {
     constructor() {
         super();
         this.state = {
@@ -60,4 +60,4 @@ class Api2 extends Component {
 
 }
 
-export default Api2
+export default FlickrImageSearch

@@ -17,13 +17,13 @@ const NavBar = () => {
                         <Link class="nav-link" to="/">About<span class="sr-only">(current)</span></Link>
                     </li>
                     <li class="nav-item">
-                        <Link class="nav-link" to="/Api1">Api1</Link>
+                        <Link class="nav-link" to="/quoteoftheday">Quotes of the Day</Link>
                     </li>
                     <li class="nav-item">
-                        <Link class="nav-link" to="/Api2">Api2</Link>
+                        <Link class="nav-link" to="/flickrimagesearch">Flickr Image Search</Link>
                     </li>
                     <li class="nav-item">
-                        <Link class="nav-link" to="/Api3">Api3</Link>
+                        <Link class="nav-link" to="/randomusers">Generate Random Users</Link>
                     </li>
                 </ul>
 

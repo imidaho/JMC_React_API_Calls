@@ -4,15 +4,22 @@ import PropTypes from 'prop-types'
 
 
 class Api2 extends Component {
+    constructor() {
+        super();
+        this.state = {
+            flickrPhotos: []
+        }
+    }
 
     photoInput = React.createRef();
 
     generateImage = (farmId, serverId, Id, secret) => {
-        const html = `
-        <div>
-            <img src=https://farm${farmId}.staticflickr.com/${serverId}/${Id}_${secret}_[b].jpg >
-        </div>`
-        return html
+        console.log(farmId)
+        const url = "https://farm" + farmId + ".staticFlickr.com/" + serverId + "/" + Id + "_" + secret + "_b.jpg"
+
+        return (<div>
+            <img src={url} />
+        </div>)
     }
 
     fetchPhotos = (e) => {
@@ -22,7 +29,8 @@ class Api2 extends Component {
             .then(resp => resp.json())
             .then(data => {
                 console.log(data.photos.photo)
-                return data.photos.photo.map(index => this.generateImage(index.farm, index.server, index.id, index.secret))
+                //return data.photos.photo.map(index => this.generateImage(index.farm, index.server, index.id, index.secret))
+                this.setState({ flickrPhotos: data.photos.photo })
             }
             )
         //.then(array => array.map(index => generateImage(index.farm, index.server, index.id, index.secret)))
@@ -36,22 +44,25 @@ class Api2 extends Component {
     //populatePhotos
     //https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
     render() {
+        const photosToDisplay = this.state.flickrPhotos.map(index => this.generateImage(index.farm, index.server, index.id, index.secret))
+
         return (
             <div>
+                <div>
+                    <h1>Photo Search</h1>
+                </div>
                 <div>
                     <form onSubmit={this.fetchPhotos} >
                         <input
                             class="form-control form-control-lg"
                             type="text"
-                            placeholder="search for photos"
+                            placeholder="Enter a Photo Search Term"
                             ref={this.photoInput}
                         />
                         <button type="submit" class="btn btn-primary mb-2">Search for photos with this term</button>
                     </form >
                 </div>
-                <div html={this.generateImage}>
-
-                </div>
+                <div>{photosToDisplay} </div>
             </div >
         )
     }

@@ -27,7 +27,7 @@ class QOD extends Component {
                 <div>
                     <h1>Choose a Quote of the Day from a category Below</h1>
                 </div>
-                <div>
+                <div className="d-flex justify-content-around">
                     <button type="button" onClick={(e) => this.fetchQuote('inspire', e)} class="btn btn-primary mb-2">Inspirational</button>
                     <button type="button" onClick={(e) => this.fetchQuote('management', e)} class="btn btn-primary mb-2">Management</button>
                     <button type="button" onClick={(e) => this.fetchQuote('life', e)} class="btn btn-primary mb-2">Life</button>
@@ -35,8 +35,8 @@ class QOD extends Component {
                     <button type="button" onClick={(e) => this.fetchQuote('love', e)} class="btn btn-primary mb-2">Love</button>
                     <button type="button" onClick={(e) => this.fetchQuote('funny', e)} class="btn btn-primary mb-2">Funny</button>
                 </div>
-                <div>{quoteToDisplay} </div>
-                <div>{authorToDisplay}</div>
+                <div className="text-center">{quoteToDisplay} </div>
+                <div className="text-center">{authorToDisplay}</div>
             </div >
         )
     }

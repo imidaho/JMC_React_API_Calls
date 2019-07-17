@@ -54,7 +54,9 @@ class RandomUsers extends Component {
                 <div>
                     <form onSubmit={this.fetchUsers} >
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Select Number of Random Users</label>
+                            <div className="text-center">
+                                <label for="exampleFormControlSelect1">Select Number of Random Users</label>
+                            </div>
                             <select class="form-control" id="exampleFormControlSelect1" ref={this.userNum}>
                                 <option value='1'>1</option>
                                 <option value='2'>2</option>
@@ -68,7 +70,9 @@ class RandomUsers extends Component {
                                 <option value='10'>10</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary mb-2">Get Users</button>
+                        <div className="text-center">
+                            <button type="submit" class="btn btn-primary mb-2">Get Users</button>
+                        </div>
                     </form >
                 </div>
                 <div>

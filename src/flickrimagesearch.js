@@ -14,9 +14,9 @@ class FlickrImageSearch extends Component {
     photoInput = React.createRef();
 
     generateImage = (farmId, serverId, Id, secret) => {
-        const url = `https://farm${farmId}.staticFlickr.com/${serverId}/${Id}_${secret}_b.jpg`
-        return (<div>
-            <img src={url} />
+        const url = `https://farm${farmId}.staticFlickr.com/${serverId}/${Id}_${secret}_c.jpg`
+        return (<div className="text-center" style={{ margin: 10 }}>
+            <img className="img-fluid rounded" src={url} />
         </div>)
     }
 
@@ -37,20 +37,22 @@ class FlickrImageSearch extends Component {
         return (
             <div>
                 <div>
-                    <h1>Photo Search</h1>
+                    <h1 className="title">Photo Search</h1>
                 </div>
                 {/* <div>
-                    <span style="z-index:50;font-size:0.9em;"><img src="https://theysaidso.com/branding/theysaidso.png" height="20" width="20" alt="theysaidso.com" /><a href="https://theysaidso.com" title="Powered by quotes from theysaidso.com" style="color: #9fcc25; margin-left: 4px; vertical-align: middle;">theysaidso.com</a></span>
-                </div> */}
+                    <span style={{ z- index: 50;font-size:0.9em;}}><img src="https://theysaidso.com/branding/theysaidso.png" height={{ 20}} width={{ 20}} alt="theysaidso.com" /><a href="https://theysaidso.com" title="Powered by quotes from theysaidso.com" style={{ color: #9fcc25, margin-left: 4, vertical-align: middle}}>theysaidso.com</a></span>
+                </div > */}
                 <div>
                     <form onSubmit={this.fetchPhotos} >
                         <input
-                            class="form-control form-control-lg"
+                            className="form-control form-control-med"
                             type="text"
                             placeholder="Enter a Photo Search Term"
                             ref={this.photoInput}
                         />
-                        <button type="submit" class="btn btn-primary mb-2">Search for photos with this term</button>
+                        <div className="text-center">
+                            <button type="submit" className="btn btn-primary mb-2 mx-auto" style={{ width: 400 }}>Search for photos with this term</button>
+                        </div>
                     </form >
                 </div>
                 <div>{photosToDisplay} </div>

@@ -8,6 +8,7 @@ class FlickrImageSearch extends Component {
         super();
         this.state = {
             flickrPhotos: []
+
         }
     }
 
@@ -27,8 +28,10 @@ class FlickrImageSearch extends Component {
             .then(data => {
                 console.log(data.photos.photo)
                 this.setState({ flickrPhotos: data.photos.photo })
-            }
-            )
+            })
+            .catch(error => {
+                console.log('Error fetching and parsing data', error);
+            })
         e.currentTarget.reset();
     }
     render() {

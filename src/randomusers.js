@@ -41,6 +41,9 @@ class RandomUsers extends Component {
                 this.setState({ users: data.results })
                 console.log(this.state.users)
             })
+            .catch(error => {
+                console.log('Error fetching and parsing data', error);
+            })
     }
 
     render() {

@@ -6,8 +6,8 @@ class QOD extends Component {
     constructor() {
         super();
         this.state = {
-            quoteOfTheDay: "",
-            author: ""
+            quoteOfTheDay: '',
+            author: ''
         }
     }
 
@@ -15,13 +15,16 @@ class QOD extends Component {
         fetch(`http://quotes.rest/qod.json?category=${buttonValue}`)
             .then(response => response.json())
             .then(response => {
-                this.setState({ quoteOfTheDay: response.contents.quotes[0].quote })
-                this.setState({ author: response.contents.quotes[0].author })
+                this.setState({ quoteOfTheDay: `"${response.contents.quotes[0].quote}"` })
+                this.setState({ author: `--${response.contents.quotes[0].author}` })
+            })
+            .catch(error => {
+                console.log('Error fetching and parsing data', error);
             })
     }
     render() {
-        const quoteToDisplay = `"${this.state.quoteOfTheDay}"`
-        const authorToDisplay = `-- ${this.state.author}`
+        const quoteToDisplay = this.state.quoteOfTheDay
+        const authorToDisplay = this.state.author
         return (
             <div>
                 <div>

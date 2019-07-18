@@ -5,7 +5,7 @@ Hello!
 This is my Code Louisville React.js Final Project for the May 2019 session.  
 
 About this project:
-
+-The three API Calls are made using 'fetch()' so this project is not compatible with Internet Explorer. 
 -The three routed links listed in the Navbar each demonstrate a successful Fetch APi to a freely available API.  
 They are set to catch any errors in the console, so if there seems to be a problem or delay, please check the console for details.  
 - Be advised, The Flickr Image Search utilizes a keyword input, and it is possible that the images returned by Flickr are NSFW.

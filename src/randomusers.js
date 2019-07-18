@@ -11,7 +11,7 @@ class RandomUsers extends Component {
     }
 
     userNum = React.createRef()
-
+    //populates the 
     generateUsers = (firstName, lastName, phoneNum, email) => {
         return (
             <div>
@@ -31,10 +31,9 @@ class RandomUsers extends Component {
             </div>
         )
     }
-
+    //calls randomuser api to grab x number of random user data
     fetchUsers = (e) => {
         e.preventDefault()
-        // console.log(`https://randomuser.me/api/?nat=us&results=${this.userNum.current.value}`)
         fetch(`https://randomuser.me/api/?nat=us&results=${this.userNum.current.value}`)
             .then(x => x.json())
             .then(data => {

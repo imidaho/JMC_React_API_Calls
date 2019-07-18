@@ -11,16 +11,15 @@ class FlickrImageSearch extends Component {
 
         }
     }
-
     photoInput = React.createRef();
-
+    // gets specific image from flickr using json from the Fetch call
     generateImage = (farmId, serverId, Id, secret) => {
         const url = `https://farm${farmId}.staticFlickr.com/${serverId}/${Id}_${secret}_c.jpg`
         return (<div className="text-center" style={{ margin: 10 }}>
             <img className="img-fluid rounded" src={url} />
         </div>)
     }
-
+    // API Call
     fetchPhotos = (e) => {
         e.preventDefault();
         fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=84468b7152a743aab170a8e0fee052a1&tags=${this.photoInput.current.value}&per_page=5&format=json&nojsoncallback=1`)

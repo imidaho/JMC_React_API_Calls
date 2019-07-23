@@ -1,5 +1,6 @@
 
-
+To run:
+From the console, run the command 'npm install', Then 'npm start'
 
 Hello!  
 This is my Code Louisville React.js Final Project for the May 2019 session.  

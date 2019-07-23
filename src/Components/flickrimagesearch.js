@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import PropTypes from 'prop-types'
 
 
@@ -7,7 +6,8 @@ class FlickrImageSearch extends Component {
     constructor() {
         super();
         this.state = {
-            flickrPhotos: []
+            flickrPhotos: [],
+            loading: false
 
         }
     }
@@ -26,15 +26,23 @@ class FlickrImageSearch extends Component {
             .then(resp => resp.json())
             .then(data => {
                 console.log(data.photos.photo)
-                this.setState({ flickrPhotos: data.photos.photo })
+                this.setState({
+                    flickrPhotos: data.photos.photo,
+                    loading: false
+                })
             })
             .catch(error => {
                 console.log('Error fetching and parsing data', error);
             })
         e.currentTarget.reset();
     }
+    renderPhotos = () => {
+        if (this.state.loading) return <div><h5>Loading</h5></div>
+        return (
+            this.state.flickrPhotos.map(index => this.generateImage(index.farm, index.server, index.id, index.secret))
+        )
+    }
     render() {
-        const photosToDisplay = this.state.flickrPhotos.map(index => this.generateImage(index.farm, index.server, index.id, index.secret))
 
         return (
             <div>
@@ -57,7 +65,9 @@ class FlickrImageSearch extends Component {
                         </div>
                     </form >
                 </div>
-                <div>{photosToDisplay} </div>
+                <div>
+                    {this.renderPhotos()}
+                </div>
             </div >
         )
     }

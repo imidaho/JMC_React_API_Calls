@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Route, HashRouter } from 'react-router-dom'
 import './App.css';
-import NavBar from './NavBar'
-import About from './About'
-import QOD from './quoteoftheday'
-import FlickrImageSearch from './flickrimagesearch'
-import RandomUsers from './randomusers'
+import NavBar from './Components/NavBar'
+import About from './Components/About'
+import QOD from './Components/quoteoftheday'
+import FlickrImageSearch from './Components/flickrimagesearch'
+import RandomUsers from './Components/randomusers'
 // user can s
 class App extends Component {
 
